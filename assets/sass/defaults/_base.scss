@@ -15,16 +15,8 @@
 					box-sizing: border-box; 
 }
 
-body { @include rem($base_font_size); }
+
+body { @include rem($base_font_size); background-color: $hal_medium_gray; }
+
 
 img { display: block; height: auto; max-width: 100%; width: auto; }
-
-
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// MEDIA QUERIES
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-@media only screen and (min-width: $medium) {
-
-}
