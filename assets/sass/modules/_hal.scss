@@ -3,3 +3,173 @@
 // HAL STYLES
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+@keyframes "pulse" {
+ 0% {
+   	opacity: 1;
+ }
+ 100% {
+   	opacity: 0;
+ }
+
+}
+
+@-moz-keyframes pulse {
+ 0% {
+   filter: alpha(opacity=100);
+   opacity: 1;
+ }
+ 100% {
+   filter: alpha(opacity=0);
+   opacity: 0;
+ }
+
+}
+
+@-webkit-keyframes "pulse" {
+ 0% {
+   filter: alpha(opacity=100);
+   opacity: 1;
+ }
+ 100% {
+   filter: alpha(opacity=0);
+   opacity: 0;
+ }
+
+}
+
+@-ms-keyframes "pulse" {
+ 0% {
+   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+   filter: alpha(opacity=100);
+   opacity: 1;
+ }
+ 100% {
+   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   filter: alpha(opacity=0);
+   opacity: 0;
+ }
+
+}
+
+@-o-keyframes "pulse" {
+ 0% {
+   filter: alpha(opacity=100);
+   opacity: 1;
+ }
+ 100% {
+   filter: alpha(opacity=0);
+   opacity: 0;
+ }
+
+}
+
+
+
+.-circular { border-radius: 100% }
+
+.hal { height: 100%; padding: pxcalc(10);
+	@include background-image(linear-gradient(tint($hal_medium_gray, 20%), $hal_medium_gray, shade($hal_medium_gray, 15%)));
+
+	> .wrapper { box-shadow: 0 0 15px rgba(black, 0.9) inset; height: 85%; padding: pxcalc(20);
+		// @include background-image(linear-gradient(left top, #333, #1a1a1a));
+		
+		background:
+		linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+		linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+		linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+		linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+		linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+		linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+		background-color: #131313;
+		background-size: 20px 20px;
+	}
+}
+
+.hal-label { @include rem(22); background-color: $hal_darkest_gray; border: 5px solid $hal_lightest_gray; box-shadow: 0 0 4px rgba(black, 0.4) inset; color: $hal_white; margin: 0 auto pxcalc(20,22); min-width: pxcalc(220,22); overflow: hidden;
+	@include background-image(linear-gradient(left, $hal_blue 50%, $hal_darkest_gray 50%));
+
+	> span { display: block; float: left; line-height: 1; padding: pxcalc(10,22); width: 50%; }
+
+	.__name { color: $hal_white; padding-left: pxcalc(30,22); text-align: right; }
+	.__version { text-align: left; }
+}
+
+
+
+.hal-eye { border: 2px solid rgba(black, 0.2); box-shadow: 0 20px 5px rgba(black, 0.3); height: pxcalc(240); margin: 0 auto; position: relative; width: pxcalc(240); 
+
+	.__ring { height: 100%; padding: pxcalc(8); position: relative;
+		@include background-image(linear-gradient(#a9a9a9, #fff 20%, #595959 40%, #b3b3b3 65%, #666));
+	
+		&:before { @include pseudo_base(100%,100%);
+			@extend .-circular; 
+			@include background-image(linear-gradient(#737373, #666 14%, #a9a9a9 50%, #999 72%, tint(#999, 30%) 80%, #ccc));		
+		}
+	}
+
+	.__oculus { background-color: #000; border: 1px solid rgba(black, 0.5); height: 80%; left: 50%; margin: -40% 0 0 -40%; /*overflow: hidden;*/ position: absolute; top: 50%; width: 80%;
+		.__iris { @include pseudo_base(100%,100%); @extend .-circular; position: absolute;
+
+			&.-narrow {
+				@include background-image(radial-gradient(center center, circle cover, $hal_yellow 2%, $hal_red 10%, shade($hal_red, 20%) 30%, shade($hal_red, 80%) 55%, darken(shade($hal_red, 90%), 10%) 85%));
+				// @include background-image(radial-gradient(center center, circle cover, #f2fb2e 5%, #f98b00 15%, #ec1300 30%, #120000 55%, #000 85%));
+			}
+
+			&.-wide {
+				@include background-image(radial-gradient(center center, circle cover, $hal_yellow 5%, $hal_red 15%, shade($hal_red, 20%) 40%, darken(shade($hal_red, 85%), 5%) 65%, darken(shade($hal_red, 90%), 10%) 85%));
+				// @include background-image(radial-gradient(center center, circle cover, #f2fb2e 5%, #f98b00 15%, #ec1300 30%, #120000 65%, #000 85%));
+				
+				-webkit-animation: pulse 2s ease-in-out infinite alternate;
+					 -moz-animation: pulse 2s ease-in-out infinite alternate;
+						-ms-animation: pulse 2s ease-in-out infinite alternate;
+						 -o-animation: pulse 2s ease-in-out infinite alternate;
+								animation: pulse 2s ease-in-out infinite alternate;
+			}
+		}
+
+	}
+
+}
+
+
+// .stage:hover .ball {
+//   animation: slide 2s ease-in-out .5s infinite alternate;
+// }
+
+
+
+.hal-speaker { background-color: shade($hal_medium_gray, 10%); height: 15%; padding-top: pxcalc(10); 
+	> .wrapper { /*background-color: $hal_lightest_gray;*/ box-shadow: 0 0 15px rgba(black, 0.4) inset; height: 100%; 
+		background:
+		radial-gradient(#999 30%, transparent 31%) 0 0//,
+		// radial-gradient(black 15%, transparent 16%) 8px 8px,
+		// radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+		// radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+		;
+		background-color: $hal_lightest_gray;
+		background-size: 16px 16px;
+	}
+}
+
+
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// MEDIA QUERIES
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+@media only screen and (min-width: $small) {
+	
+	.hal-eye { height: pxcalc(350); width: pxcalc(350); }
+
+}
+
+
+@media only screen and (min-width: $medium) {
+	
+	.hal-eye { height: pxcalc(500); width: pxcalc(500); }
+
+}
