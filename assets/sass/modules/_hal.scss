@@ -69,10 +69,10 @@
 
 .-circular { border-radius: 100% }
 
-.hal { height: 100%; padding: pxcalc(10);
+.hal { height: 100%; min-height: pxcalc(450); min-width: pxcalc(300); padding: pxcalc(10);
 	@include background-image(linear-gradient(tint($hal_medium_gray, 20%), $hal_medium_gray, shade($hal_medium_gray, 15%)));
 
-	> .wrapper { box-shadow: 0 0 15px rgba(black, 0.9) inset; height: 85%; padding: pxcalc(20);
+	> .wrapper { box-shadow: 0 5px 15px rgba(black, 0.9) inset; height: 85%; padding: pxcalc(20); position: relative;
 		// @include background-image(linear-gradient(left top, #333, #1a1a1a));
 		
 		background:
@@ -82,7 +82,9 @@
 		linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
 		linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
 		linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+		// background-color: pink;
 		background-color: #131313;
+		// background-size: 20px 20px;
 		background-size: 20px 20px;
 	}
 }
@@ -98,7 +100,7 @@
 
 
 
-.hal-eye { border: 2px solid rgba(black, 0.2); box-shadow: 0 20px 5px rgba(black, 0.3); height: pxcalc(240); margin: 0 auto; position: relative; width: pxcalc(240); 
+.hal-eye { border: 2px solid rgba(black, 0.2); bottom: 8%; box-shadow: 0 15px 5px rgba(black, 0.3); height: pxcalc(240); left: 50%; margin: 0 0 0 -(pxcalc(120)); position: absolute; width: pxcalc(240); 
 
 	.__ring { height: 100%; padding: pxcalc(8); position: relative;
 		@include background-image(linear-gradient(#a9a9a9, #fff 20%, #595959 40%, #b3b3b3 65%, #666));
@@ -131,6 +133,42 @@
 
 	}
 
+	.__highlight { background-color: rgba(white,0.12); border-radius: 100%; box-shadow: 0 0 3px rgba(white,0.12); height: 8%; left: 50%; margin-left: -(12%); position: absolute; top: 6%; width: 24%;
+		// @include background-image(linear-gradient(top, rgba(white,0.12) 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%));
+		// @include background-image(linear-gradient(top, rgba(white,0.15) 0%, rgba(white,0.10) 20%, transparent 70%, transparent 100%));
+
+
+		&:before,
+		&:after { border-radius: 100%; left: 50%; position: absolute; }
+		
+		&:before { @include pseudo_base(50%,50%); background-color: rgba(white, 0.10); box-shadow: 0 0 3px rgba(white,0.10); margin-left: -(25%); top: 130%; }
+
+		&:after { @include pseudo_base(26%,26%); background-color: rgba(white, 0.10); box-shadow: 0 0 3px rgba(white,0.10); margin-left: -(13%); top: 250%; }
+
+
+		&.-alpha { left: 75%; margin-left: 0; top: 30%;
+			-webkit-transform: rotate( 60deg);
+				 -moz-transform: rotate( 60deg);
+					 -o-transform: rotate( 60deg);
+					-ms-transform: rotate( 60deg);
+							transform: rotate( 60deg);
+
+			// -webkit-transform-origin: bottom center;
+			// 	 -moz-transform-origin: bottom center;
+			// 		 -o-transform-origin: bottom center;
+			// 		-ms-transform-origin: bottom center;
+			// 				transform-origin: bottom center;
+		}
+
+		&.-gamma { left: 2%; margin-left: 0; top: 30%;
+			-webkit-transform: rotate( -60deg);
+				 -moz-transform: rotate( -60deg);
+					 -o-transform: rotate( -60deg);
+					-ms-transform: rotate( -60deg);
+							transform: rotate( -60deg);
+		}
+	}
+
 }
 
 
@@ -141,7 +179,7 @@
 
 
 .hal-speaker { background-color: shade($hal_medium_gray, 10%); height: 15%; padding-top: pxcalc(10); 
-	> .wrapper { /*background-color: $hal_lightest_gray;*/ box-shadow: 0 0 15px rgba(black, 0.4) inset; height: 100%; 
+	> .wrapper { /*background-color: $hal_lightest_gray;*/ box-shadow: 0 5px 10px  rgba(black, 0.5) inset; height: 100%; 
 		background:
 		radial-gradient(#999 30%, transparent 31%) 0 0//,
 		// radial-gradient(black 15%, transparent 16%) 8px 8px,
@@ -163,13 +201,19 @@
 
 @media only screen and (min-width: $small) {
 	
-	.hal-eye { height: pxcalc(350); width: pxcalc(350); }
+	.hal { min-height: pxcalc(600); }
+
+	.hal-label { max-width: pxcalc(300); }
+	
+	.hal-eye { height: pxcalc(350); margin-left: -(pxcalc(175)); width: pxcalc(350); }
 
 }
 
 
 @media only screen and (min-width: $medium) {
 	
-	.hal-eye { height: pxcalc(500); width: pxcalc(500); }
+	.hal { min-height: pxcalc(800); }
+
+	.hal-eye { height: pxcalc(500); margin-left: -(pxcalc(250)); width: pxcalc(500); }
 
 }
