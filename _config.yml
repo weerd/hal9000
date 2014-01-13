@@ -1,0 +1,7 @@
+name: DETONE8
+tagline: The musician's arsenal is coming soon.
+
+markdown: redcarpet
+pygments: true
+
+exclude: [README.md, sass, config.rb, .sass-cache]
